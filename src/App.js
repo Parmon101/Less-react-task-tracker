@@ -27,7 +27,7 @@ function App() {
   // Add Task
   const addTask = async (task) => {
 
-    let data = getDataForAddTask(task)
+    let data = await getDataForAddTask(task)
 
     setTasks([...tasks, data])
 
@@ -47,7 +47,7 @@ function App() {
     const taskToToggle = await fetchTask(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder}
 
-    let data = getData(id, updTask)
+    let data = await getData(id, updTask)
 
 
     setTasks(
