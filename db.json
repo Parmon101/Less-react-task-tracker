@@ -11,6 +11,24 @@
       "day": "fasdfas",
       "reminder": false,
       "id": 2
+    },
+    {
+      "text": "234",
+      "day": "23",
+      "reminder": true,
+      "id": 3
+    },
+    {
+      "text": "testAdd2",
+      "day": "today",
+      "reminder": true,
+      "id": 4
+    },
+    {
+      "text": "addTest3",
+      "day": "today2",
+      "reminder": false,
+      "id": 5
     }
   ]
 }

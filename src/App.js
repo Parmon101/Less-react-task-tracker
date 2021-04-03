@@ -7,6 +7,9 @@ import AddTask from './components/AddTask'
 import About from './components/About'
 import fetchTasks from './components/FetchTasks'
 import fetchTask from './components/FetchTask.js'
+import getData from './components/getData'
+import getDataForAddTask from './components/getDataForAddTask'
+
 
 function App() {
   const [showAddTask, setShowTask] = useState(false)
@@ -23,21 +26,11 @@ function App() {
 
   // Add Task
   const addTask = async (task) => {
-    const res = await fetch('http://localhost:5000/tasks', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(task),
-    })
 
-    const data = await res.json()
+    let data = getDataForAddTask(task)
 
     setTasks([...tasks, data])
 
-    // const id = Math.floor(Math.random() * 10000) + 1
-    // const newTask = { id, ...task }
-    // setTasks([...tasks, newTask])
   }
 
   // delete task
@@ -54,15 +47,8 @@ function App() {
     const taskToToggle = await fetchTask(id)
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder}
 
-    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
-      method:'PUT',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(updTask)
-    })
+    let data = getData(id, updTask)
 
-    const data = await res.json()
 
     setTasks(
       tasks.map((task) =>
